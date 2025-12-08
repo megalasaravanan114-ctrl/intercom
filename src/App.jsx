@@ -1,15 +1,18 @@
 import {  Routes, Route} from "react-router-dom";
 import Home from "./pages/Home";
+import IntercomAuthPage from "./pages/auth/IntercomAuthPage";
+import TransactionTable from "./components/TransactionTable/TransactionTable";
 
 function App() {
   return (
     <>
       <div className="App">
-        <Home />
+        <IntercomAuthPage />
+        {/* <Home /> */}
         <Routes>
-          <Route path="/" element={<></>} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<></>} />
-          <Route path="/services" element={<></>} />
+          <Route path="/transcations" element={<TransactionTable />} />
           <Route path="/contact" element={<></>} />
         </Routes>
       </div>

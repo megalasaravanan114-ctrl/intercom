@@ -1,8 +1,8 @@
 import { useState } from "react";
 import blur from "../../assets/bgBlur/Blur.png";
 
-const StepsSection = () => {
-  const [activeStep, setActiveStep] = useState(1);
+const StepsSection = ({activeStep, setActiveStep}) => {
+  // const [activeStep, setActiveStep] = useState(1);
   const steps = [
     {
       id: 1,

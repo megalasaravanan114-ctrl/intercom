@@ -6,14 +6,16 @@ import HeroSection from "../components/HomeComponent/HeroSection"
 import FooterSection from "../components/HomeComponent/FooterSection"
 import Navbar from "../components/HomeComponent/Navbar"
 import Banner from "../components/HomeComponent/Banner"
+import { useState } from "react"
 
 export default function Home(){
+  const [activeStep, setActiveStep] = useState(1);
     return(
     <>
         <Navbar />
         <Banner />
-        <Benefits />
-        <StepsSection />
+        <Benefits activeStep={activeStep} />
+        <StepsSection activeStep={activeStep} setActiveStep={setActiveStep}  />
         <IndicatorsSection />
         <HeroSection />
         <FooterSection />

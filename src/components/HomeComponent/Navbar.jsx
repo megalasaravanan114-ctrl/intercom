@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
     <img src={banner} alt="banner-img" className="absolute -z-10 h-[1550px]" />
     <nav className="text-white shadow-lg pt-[26px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div className="flex justify-between h-16 items-center">
           <div className="font-semibold">
             <Link to="/" className="flex item-center text-[16px]"><img src={logo} alt="logo" className="w-[27px] h-[27px] mr-2" /> INTERCOM</Link>
@@ -22,7 +22,7 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-6 items-center">
             <Link to="/" className="hover:text-gray-400">Trade</Link>
             <Link to="/about" className="hover:text-gray-400">Analytics</Link>
-            <Link to="/services" className="hover:text-gray-400">Currencies</Link>
+            <Link to="/transcations" className="hover:text-gray-400">Currencies</Link>
             <Link to="/contact" className="hover:text-gray-400">Business</Link>
             <button className="bg-[#373B65] px-6 py-3 rounded-lg">Log In</button>
             <button className="bg-gradient-to-b from-[#4F1AD6] to-[#8059E3] px-6 py-3 rounded-lg">Get an Account</button>
