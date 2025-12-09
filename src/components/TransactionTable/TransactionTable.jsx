@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import transactions from "../../json-data/transactions";
+import Navbar from "../HomeComponent/Navbar";
+import DropDown from "../Comman-dropDown/DropDown";
 
 export default function TransactionTable() {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
+  
+  const [time, setTime] = useState("Time Past 30 days");
+  const [coin, setCoin] = useState("All");
+  const [status, setStatus] = useState("All");
+
+  const timeOptions = ["Time Past 30 days", "Past 7 days", "Past 90 days"];
+  const coinOptions = ["Coin", "Bitcoin", "Ethereum", "Solana"];
+  const statusOptions = ["Status", "Active", "Inactive"];
 
   const totalItems = transactions.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -34,14 +44,39 @@ export default function TransactionTable() {
   };
 
   return (
-    <div className="p-6 bg-[#0d0d16] text-white w-full">
-      <h2 className="text-2xl font-semibold mb-6">Transaction History</h2>
+    <>
+      <Navbar />
+      <div className="p-6 mt-7 bg-[#00031E] text-white w-full z-10">
+      <h2 className="text-2xl font-semibold mb-9">Transaction History</h2>
+      {/* dynamic dropdown */}
+      <div className="flex gap-4 mb-7">
+      <DropDown
+        value={time}
+        onChange={setTime}
+        options={timeOptions}
+        className="w-auto"
+      />
 
-      {/* Desktop Table */}
+      <DropDown
+        value={coin}
+        onChange={setCoin}
+        options={coinOptions}
+        className="w-32"
+      />
+
+      <DropDown
+        value={status}
+        onChange={setStatus}
+        options={statusOptions}
+        className="w-32"
+      />
+      </div>
+
+      {/* table */}
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="text-gray-300">
-            <tr className="border-b border-gray-700 font-normal text-[#8C8C8C] bg-[#1E1A2D] rounded">
+            <tr className="rounded-2xl border-b border-gray-700 font-normal text-[#8C8C8C] bg-[#1E1A2D] rounded">
               <th className="py-4 pl-6 text-left">Date</th>
               <th className="py-4 text-left">Pair</th>
               <th className="py-4 text-left">Amount Swapped</th>
@@ -128,9 +163,9 @@ export default function TransactionTable() {
       </div>
 
       {/* pagina */}
-      {/* <div className="flex justify-end items-center mt-6 text-gray-300">
-        <p className="mr-3">
-          {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, totalItems)} of{" "}
+      <div className="flex justify-end items-center mt-6 text-gray-300">
+        <p className="mr-3 text-sm">
+          {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, totalItems)}  of{" "}
           {totalItems}
         </p>
 
@@ -138,7 +173,7 @@ export default function TransactionTable() {
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
-            className="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition disabled:opacity-30"
+            className="px-4 py-2 mx-9 rounded text-[#B9B9B9] hover:text-gray-600 transition disabled:opacity-30"
           >
             Prev
           </button>
@@ -146,12 +181,13 @@ export default function TransactionTable() {
           <button
             onClick={nextPage}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition disabled:opacity-30"
+            className="px-4 py-2 rounded text-white hover:text-gray-200 transition disabled:opacity-30"
           >
             Next
           </button>
         </div>
-      </div> */}
-    </div>
+      </div>
+      </div>
+    </>
   );
 }

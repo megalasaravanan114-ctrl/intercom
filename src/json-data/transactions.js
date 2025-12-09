@@ -221,39 +221,6 @@ const transactions = [
     status: "Failed",
     gasFee: "0.001 ETH",
   },
-  {
-    date: "31 Oct 2025, 15:50",
-    pair: "USDT/BTC",
-    amountSwapped: "1000 USDT",
-    amountReceived: "0.022 BTC",
-    exchangeRate: "1 BTC = 45000 USDT",
-    network: "Bitcoin",
-    txHash: "0x2de...11cb",
-    status: "Completed",
-    gasFee: "0.0001 BTC",
-  },
-  {
-    date: "31 Oct 2025, 15:25",
-    pair: "MATIC/BNB",
-    amountSwapped: "300 MATIC",
-    amountReceived: "0.735 BNB",
-    exchangeRate: "1 MATIC = 0.00245 BNB",
-    network: "Polygon",
-    txHash: "0x9cd...d711",
-    status: "Pending",
-    gasFee: "0.25 MATIC",
-  },
-  {
-    date: "31 Oct 2025, 15:00",
-    pair: "SOL/ETH",
-    amountSwapped: "15 SOL",
-    amountReceived: "0.34 ETH",
-    exchangeRate: "1 SOL = 0.0226 ETH",
-    network: "Solana",
-    txHash: "0x4a2...bb14",
-    status: "Completed",
-    gasFee: "0.003 SOL",
-  }
 ];
 
 export default transactions;

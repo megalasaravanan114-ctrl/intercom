@@ -9,6 +9,7 @@ import Banner from "../components/HomeComponent/Banner"
 import { useState } from "react"
 
 export default function Home(){
+
   const [activeStep, setActiveStep] = useState(1);
     return(
     <>

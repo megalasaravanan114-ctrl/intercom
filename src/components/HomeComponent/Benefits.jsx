@@ -8,7 +8,8 @@ import dots from "../../assets/dots.png";
 import solana from "../../assets/Solana (SOL).png";
 import coin from "../../assets/Coin Logo.png";
 import { ImArrowRight } from "react-icons/im";
-import { SlArrowDown } from "react-icons/sl";
+import { SlArrowDown, SlArrowUp  } from "react-icons/sl";
+import { useState } from "react";
 // import line from "../assets/icons/Line.png"
 
 const Benefits = ({ activeStep }) => {
@@ -29,6 +30,14 @@ const Benefits = ({ activeStep }) => {
       button: "Confirm & Send"
     },
   };
+  const tokens = [
+    { symbol: "USDT", icon: solana },
+    { symbol: "ETH", icon: solana },
+    { symbol: "BTC", icon: solana }
+  ];
+  const [selectedToken, setSelectedToken] = useState(tokens[0]);
+  const [open, setOpen] = useState(false);
+  const [open0, setOpen0] = useState(false);
   return (
     <>
       <div className=" bg-[#00031C] mt-[5%] relative ">
@@ -72,15 +81,6 @@ const Benefits = ({ activeStep }) => {
           alt=""
           className="absolute top-0 left-0 opacity-70 w-full h-auto"
         />
-        {/* <h1 className="text-[16px] lg:mt-[0px] mt-[23px] sm:text-[18px] md:text-[20px]pt-16 sm:pt-20 md:pt-[8%] text-[#959EFE] text-center relative z-10"
-        > How it Works</h1> */}
-        {/* <div className="flex gap-6 mb-4 text-[#959EFE] pt-16 sm:pt-20 md:pt-[7%] items-center justify-center">
-            <div><img src={line} alt="" /> <span className="w-2 h-2 bg-[#5D6BFF] rounded-full"></span></div>
-            <p className="text-[16px] sm:text-[15px] md:text-[17px] text-[#959EFE] text-center relative z-10">
-              How it Works
-            </p>
-            <span className="w-2 h-2 bg-[#5D6BFF] rounded-full"></span>
-          </div> */}
         <div className="flex items-center justify-center gap-5 pt-16 sm:pt-20 md:pt-[7%] mb-8">
           <div className="flex items-center">
             <div className="w-14 h-[2px] bg-[#4F60FA] opacity-40 rounded-l-[50%]"></div>
@@ -112,8 +112,6 @@ const Benefits = ({ activeStep }) => {
       {/* next-sesstion */}
 
       <div className="relative w-full bg-[#00031C] lg:py-10 sm-p-0 px-4">
-        {/* <img src={currencyBorder} alt="black_border" className="m-auto" />
-      <img src={benefits03} alt="benifits_03" className="absolute top-0 left-0 w-full lg:h-[500px]  " /> */}
         <div className="relative w-full sm:h-[500px] h-[300px]">
           <div className=" lg:w-[85%] sm-w[100%] lg:h-[500px] m-auto relative bg-black box-content rounded-[5px]">
             {/* <div className=""></div> */}
@@ -122,8 +120,6 @@ const Benefits = ({ activeStep }) => {
               alt="benefits_03"
               className="absolute w-[98%] h-[97%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[5px] border border-[1px] border-[#00031c]"
             />
-            {/* <img src={currencyBorder} alt="black_border" className="m-auto" /> */}
-
             {/* card */}
 
             <div className="m-auto">
@@ -139,28 +135,78 @@ const Benefits = ({ activeStep }) => {
                   {activeStep === 1 && (
                     /*  1 */
                     <div className="flex flex-row sm:flex-row items-center justify-between gap-4 mt-8 lg:w-[70%] sm-w[100%]">
+                      {/* first drop down */}
+                      <div className="relative select-none">
                       <div
+                      onClick={() => setOpen(!open)} 
                         className="flex items-center gap-2 px-4 py-3 rounded-xl 
-        border border-[#7B7B7B] w-full sm:w-auto cursor-pointer"
+                        border border-[#7B7B7B] w-full sm:w-auto cursor-pointer"
                       >
-                        <img src={solana} alt="link" className="sm:w-7 sm:h-7 w-3 h-3" />
+                        <img
+                          src={selectedToken.icon}
+                          alt={selectedToken.symbol}
+                          className="sm:w-7 sm:h-7 w-3 h-3" />
                         <span className="sm:text-sm text-sm lg:mx-2">LINK</span>
                         <span className="text-gray-400 sm:text-sm text-xs font-semibold">
-                          <SlArrowDown />
+
+                          {open ? <SlArrowUp /> : <SlArrowDown />}
                         </span>
                       </div>
+
+                      {/* menu */}
+                      {open && (
+                        <div className=" mt-2 bg-[#1F2130] border border-[#333] absolute
+                        rounded-lg shadow-lg z-20 w-full">
+                          {tokens.map((t) => (
+                            <div
+                              key={t.symbol}
+                              className="flex items-center gap-2 px-3 py-2 hover:bg-[#2A2C3A] cursor-pointer"
+                              onClick={() => {
+                                setSelectedToken(t);
+                                setOpen(false);
+                              }}
+                            >
+                              <img src={t.icon} alt={t.symbol} className="w-5 h-5" />
+                              <span>{t.symbol}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}</div>
 
                       <span className="sm:text-[25px] text-[#4B57DA]">
                         <ImArrowRight />
                       </span>
 
-                      <div className="flex items-center gap-2 px-4 py-3 rounded-xl border border-[#7B7B7B] w-full sm:w-auto cursor-pointer">
+                      {/* second dropdown */}
+                      <div className="relative select-none">
+                      <div 
+                      onClick={() => setOpen0(!open0)} className="flex items-center gap-2 px-4 py-3 rounded-xl border border-[#7B7B7B] w-full sm:w-auto cursor-pointer">
                         <img src={coin} alt="hbar" className="sm:w-7 sm:h-7 w-3 h-3" />
                         <span className="sm:text-sm text-sm lg:mx-2">HBAR</span>
                         <span className="text-gray-400 lg:text-sm text-xs">
-                          <SlArrowDown />
+                          {open0 ? <SlArrowUp /> : <SlArrowDown />}
                         </span>
                       </div>
+
+                      {/* menu */}
+                      {open0 && (
+                        <div className=" mt-2 bg-[#1F2130] border border-[#333] absolute
+                        rounded-lg shadow-lg z-20 w-full">
+                          {tokens.map((t) => (
+                            <div
+                              key={t.symbol}
+                              className="flex items-center gap-2 px-3 py-2 hover:bg-[#2A2C3A] cursor-pointer"
+                              onClick={() => {
+                                setSelectedToken(t);
+                                setOpen(false);
+                              }}
+                            >
+                              <img src={t.icon} alt={t.symbol} className="w-5 h-5" />
+                              <span>{t.symbol}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}</div>
                     </div>
                   )}
 

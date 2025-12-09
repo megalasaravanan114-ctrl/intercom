@@ -23,23 +23,19 @@ const Banner = () => {
         tokenSymbol="USDT"
         bottomLeftValue="348.68"
         bottomRightValue="2454.65"
-        onMaxClick={() => alert("MAX clicked")}
         className="bg-[#000214]"
       />
 
-      <div className="flex justify-center text-white absolute w-full w-full max-w-[20rem] sm:max-w-[28rem] lg:max-w-[36rem] mx-auto ">
+      <div className="flex justify-center text-white absolute w-full w-full max-w-[20rem]  lg:max-w-auto mx-auto z-30">
 
          <div className="flex items-center space-y-1 text-black">
           {/* <img src={arrow} alt="" /> */}
           <img src={sq} alt="swap" className="cursor-pointer w-[67%] md:w-full" />
-           {/* <ImArrowUp  className="text-xl" />
-           <FaArrowDown className="text-xl" /> */}
          </div>
       </div>
        
       <SwapCard
         title="You Get"
-        amount="2454.65"
         tokenIcon={AvaxLogo}
         tokenSymbol="USDT"
         bottomLeftValue="2454.65"
@@ -68,22 +64,3 @@ const Banner = () => {
 export default Banner;
 
 
-
-
-  // <div className="absolute -mt-7 w-full flex items-center justify-center my-2">
-
-  //   <div className="
-  //     w-16 h-16 
-  //     bg-gradient-to-br from-[#4b6bff] to-[#8f5cff]
-  //     clip-hexagon 
-  //     flex items-center justify-center 
-  //     shadow-xl
-  //     border border-white/20
-  //   ">
-  //     <div className="flex flex-col items-center space-y-1 text-black">
-  //       <FaArrowUp className="text-xl" />
-  //       <FaArrowDown className="text-xl" />
-  //     </div>
-  //   </div>
-
-  // </div>
